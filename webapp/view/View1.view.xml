@@ -1,0 +1,26 @@
+<mvc:View controllerName="com.sap.fu.fileUpload.controller.View1" xmlns:mvc="sap.ui.core.mvc" displayBlock="true" xmlns="sap.m" xmlns:u="sap.ui.unified">
+	<Shell id="shell">
+		<App id="app">
+			<pages>
+				<Page id="page" title="{i18n>title}">
+					<content>
+						<Button press="onUpload" text="Upload"></Button>
+						<u:FileUploader id="id_FileUpload" enabled="true" name="myFileUpload" uploadUrl="/int_pc/sap/opu/odata/SAP/ZFILE_UPLOAD_TEMP_SRV/FileSet"  
+								uploadComplete="handleUploadComplete" fileType="png,jpg,jpeg,pdf,zip,zix,pptx,ppt,bmp,gif,rar" typeMissmatch="onFileTypeMissmatch"
+								tooltip="Upload your file" useMultipart="false">
+								<!-- End of change by C5265906 on 02/06/2018 – Attachments -->
+							<!--	<u:parameters>
+									<u:FileUploaderParameter id="filenameFuParam" name="filename" value=""/>
+									<u:FileUploaderParameter id="filetitleFuParam" name="title" value=""/>
+									<u:FileUploaderParameter id="updateFilenameFuParam" name="updateFileName" value=""/>
+									<u:FileUploaderParameter id="filedescrFuParam" name="description" value=""/>
+									<u:FileUploaderParameter id="fileformatTypeFuParam" name="formatType" value=""/>
+									<u:FileUploaderParameter id="fileroleTypeFuParam" name="roles" value=""/>
+								</u:parameters>-->
+							</u:FileUploader>
+					</content>
+				</Page>
+			</pages>
+		</App>
+	</Shell>
+</mvc:View>
