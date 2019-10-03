@@ -1,23 +1,59 @@
-<mvc:View controllerName="com.sap.fu.fileUpload.controller.View1" xmlns:mvc="sap.ui.core.mvc" displayBlock="true" xmlns="sap.m" xmlns:u="sap.ui.unified">
+<mvc:View controllerName="com.sap.fu.fileUpload.controller.View1" xmlns:mvc="sap.ui.core.mvc" displayBlock="true" xmlns="sap.m" xmlns:u="sap.ui.unified"
+xmlns:custom="com.sap.fu.fileUpload.controls" xmlns:l="sap.ui.layout">
 	<Shell id="shell">
 		<App id="app">
 			<pages>
 				<Page id="page" title="{i18n>title}">
 					<content>
 						<Button press="onUpload" text="Upload"></Button>
-						<u:FileUploader id="id_FileUpload" enabled="true" name="myFileUpload" uploadUrl="/int_pc/sap/opu/odata/SAP/ZFILE_UPLOAD_TEMP_SRV/FileSet"  
+							<custom:FileUploaderCustom id="id_FileUploadSec" enabled="true" name="myFileUpload" uploadUrl="/int_pc/sap/opu/odata/SAP/ZFILE_UPLOAD_TEMP_SRV/FileTestSet(Sid='10010',Fname='NewFilePPt')/$value"  
 								uploadComplete="handleUploadComplete" fileType="png,jpg,jpeg,pdf,zip,zix,pptx,ppt,bmp,gif,rar" typeMissmatch="onFileTypeMissmatch"
 								tooltip="Upload your file" useMultipart="false">
-								<!-- End of change by C5265906 on 02/06/2018 – Attachments -->
-							<!--	<u:parameters>
+									<custom:parameters>
 									<u:FileUploaderParameter id="filenameFuParam" name="filename" value=""/>
 									<u:FileUploaderParameter id="filetitleFuParam" name="title" value=""/>
 									<u:FileUploaderParameter id="updateFilenameFuParam" name="updateFileName" value=""/>
 									<u:FileUploaderParameter id="filedescrFuParam" name="description" value=""/>
 									<u:FileUploaderParameter id="fileformatTypeFuParam" name="formatType" value=""/>
 									<u:FileUploaderParameter id="fileroleTypeFuParam" name="roles" value=""/>
-								</u:parameters>-->
-							</u:FileUploader>
+								</custom:parameters>
+							</custom:FileUploaderCustom>
+							<!--	<Label text="Title" required="true"/>
+							<Input id= "fileTitleInp" enabled="true" value=""></Input>
+							<Label text="types"/>
+							<RadioButtonGroup columns="4" selectedIndex="{oAttachmentUrlModel>/FileType}">
+								<buttons>
+									<RadioButton id="RB3-1" enabled="{scenariodetailModel>/oModeEdit}" text="{typesModel>/Types/results/0/description}"/>
+									<RadioButton id="RB3-2" enabled="{scenariodetailModel>/oModeEdit}" text="{typesModel>/Types/results/1/description}"/>
+									<RadioButton id="RB3-3" enabled="{scenariodetailModel>/oModeEdit}" text="{typesModel>/Types/results/2/description}"/>
+									<RadioButton id="RB3-4" enabled="{scenariodetailModel>/oModeEdit}" text="{typesModel>/Types/results/3/description}"/>
+								</buttons>
+							</RadioButtonGroup>
+							<Label text="{configurableModel>/attachUid/rolesFUid/element_label}" required="true"/>
+							<l:Grid defaultSpan="XL3 L3 M6 S6" hSpacing="0.5">
+								<l:content>
+									<CheckBox enabled="{scenariodetailModel>/oModeEdit}" id="CB4-1" text="{targetAudienceModel>/results/0/description}"
+										selected="{oAttachmentUrlModel>/FileRole1}"/>
+									<CheckBox enabled="{scenariodetailModel>/oModeEdit}" id="CB4-2" text="{targetAudienceModel>/results/1/description}"
+										selected="{oAttachmentUrlModel>/FileRole2}"/>
+									<CheckBox enabled="{scenariodetailModel>/oModeEdit}" id="CB4-3" text="{targetAudienceModel>/results/2/description}"
+										selected="{oAttachmentUrlModel>/FileRole3}"/>
+									<CheckBox enabled="{scenariodetailModel>/oModeEdit}" id="CB4-4" text="{targetAudienceModel>/results/3/description}"
+										selected="{oAttachmentUrlModel>/FileRole4}"/>
+								</l:content>
+							</l:Grid>-->
+				<!--		<u:FileUploader id="id_FileUpload" enabled="true" name="myFileUpload" uploadUrl="/int_pc/sap/opu/odata/SAP/ZFILE_UPLOAD_TEMP_SRV/FileTestSet(Sid='10010',Fname='test')/$value"  
+								uploadComplete="handleUploadComplete" fileType="png,jpg,jpeg,pdf,zip,zix,pptx,ppt,bmp,gif,rar" typeMissmatch="onFileTypeMissmatch"
+								tooltip="Upload your file" useMultipart="false">
+								<u:parameters>
+									<u:FileUploaderParameter id="filenameFuParam" name="filename" value=""/>
+									<u:FileUploaderParameter id="filetitleFuParam" name="title" value=""/>
+									<u:FileUploaderParameter id="updateFilenameFuParam" name="updateFileName" value=""/>
+									<u:FileUploaderParameter id="filedescrFuParam" name="description" value=""/>
+									<u:FileUploaderParameter id="fileformatTypeFuParam" name="formatType" value=""/>
+									<u:FileUploaderParameter id="fileroleTypeFuParam" name="roles" value=""/>
+								</u:parameters>
+							</u:FileUploader> -->
 					</content>
 				</Page>
 			</pages>

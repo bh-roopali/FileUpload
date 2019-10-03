@@ -24,6 +24,14 @@
 					"localUri": "localService/metadata.xml"
 				}
 			},
+				"YDSM_SRVNEW": {
+				"uri": "/int_pc/sap/opu/odata/sap/YDSM_SRV/",
+				"type": "OData",
+				"settings": {
+					"odataVersion": "2.0",
+					"localUri": "localService/metadata.xml"
+				}
+			},
 				"YUS_SRV": {
 				"uri": "/int_pc/sap/opu/odata/sap/YUS_SRV/",
 				"type": "OData",
@@ -88,6 +96,18 @@
 					"defaultUpdateMethod": "Put"
 				},
 				"dataSource": "YDSM_SRV",
+				"preload": true
+			},
+			
+				"": {
+				"type": "sap.ui.model.odata.v2.ODataModel",
+				"settings": {
+					"defaultOperationMode": "Server",
+					"defaultBindingMode": "OneTime",
+					"defaultCountMode": "Request",
+					"defaultUpdateMethod": "Put"
+				},
+				"dataSource": "YDSM_SRVNEW",
 				"preload": true
 			}
 		},

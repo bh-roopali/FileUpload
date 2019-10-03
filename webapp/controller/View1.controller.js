@@ -7,19 +7,60 @@ sap.ui.define([
 		onInit: function () {
 			//var oModel = new sap.ui.model.odata.ODataModel("https://lsftdc00.wdf.sap.corp:1443/sap/opu/odata/sap/ZFILE_UPLOAD_TEMP_SRV/");
 		},
-		
-		handleUploadComplete: function(){
-		//	alert("success");
+
+		handleUploadComplete: function () {
+			alert("success");
 		},
 
 		onUpload: function () {
 			var that = this;
-			/*var oModel = new sap.ui.model.odata.ODataModel("https://lsftdc00.wdf.sap.corp:1443/sap/opu/odata/sap/ZFILE_UPLOAD_TEMP_SRV/");*/
+					var oData = {
+				"fileKey":"",
+				"scenarioId":"",
+				"requestNo":"900000141205",
+				"url":"",
+				"title":"image",
+				"fileName":"10X10.png",
+				"fileType":"image/png",
+				"mimeType":"",
+				"size":"",
+				"description":"",
+				"lang":"",
+				"attachType":"",
+				"format":"1",
+				"roles":"",
+				"rolesDesc":"4,5,38,39",
+				"Filecontent": "AAABBCCC"
+				};
+				var oDataModel = that.getOwnerComponent().getModel();
+				oDataModel.setUseBatch(true);
+					oDataModel.create("/FileUploadSet", oData, {
+				success: function (oResponse) {
+					oDataModel.setUseBatch(false);
+					sap.m.MessageToast.show("Upload Success");
+				/*	that.getUploadedFile(oAttachType);
+					that.getView().setBusy(false);
+					that.onClearFileUrl(oAttachType);*/
+				},
+				error: function (oError) {
+					that.getUploadedFile(oAttachType);
+					that.getView().setBusy(false);
+					var message = "";
+					message = jQuery.parseJSON(oError.responseText).error.message.value;
+					if (message) {
+						sap.m.MessageToast.show(message);
+					} else {
+						sap.m.MessageToast.show("Upload Failed");
+					}
+				}
+			});
+			var oFileUploader = that.getView().byId("id_FileUploadSec");
+			oFileUploader.removeAllHeaderParameters();
+				/*var oModel = new sap.ui.model.odata.ODataModel("https://lsftdc00.wdf.sap.corp:1443/sap/opu/odata/sap/ZFILE_UPLOAD_TEMP_SRV/");*/
 			this.getOwnerComponent().getModel("testModel").refreshSecurityToken(function () {
 
 				console.log('Succesfully retrieved CSRF Token');
 
-				var oFileUploader = that.getView().byId("id_FileUpload");
 				oFileUploader.addHeaderParameter(new sap.ui.unified.FileUploaderParameter({
 					name: "SLUG",
 					value: oFileUploader.getValue()
